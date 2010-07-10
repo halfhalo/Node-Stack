@@ -22,10 +22,8 @@ stack.prototype.add=function(obj){
 	{
 		obj.name=this.array.length;
 	}
-	console.log("Adding: "+obj.name)
 	if(this.exists(obj.name))
 	{
-		console.log("Object Exists");
 		this.array[this.getByName(obj.name).id]=obj;
 		return this.exists(obj.name);
 	}
@@ -83,7 +81,6 @@ stack.prototype.prune=function(){
 		}
 		
 	});
-	console.log("size: "+this.size());
 	this.array=temparr;
 	return true;
 }

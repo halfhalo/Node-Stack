@@ -14,6 +14,7 @@ stack.prototype.each=function(fnc){
 stack.prototype.add=function(obj){
 	this.prune();
 	var id=this.array.length;
+	
 	if(obj.name)
 	{
 	}
@@ -21,6 +22,7 @@ stack.prototype.add=function(obj){
 	{
 		obj.name=this.array.length;
 	}
+	console.log("Adding: "+obj.name)
 	if(this.exists(obj.name))
 	{
 		console.log("Object Exists");

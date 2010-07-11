@@ -41,12 +41,12 @@ stack.prototype.remove=function(name){
 		this.array[this.getByName(name).id]=null;
 	}
 	this.prune();
-	return true;
+	
 };
 stack.prototype.size=function(){
 
 	return this.array.length;
-}
+};
 stack.prototype.exists=function(name){
 	var result=false;
 	this.each(function(obj, id){
@@ -58,7 +58,7 @@ stack.prototype.exists=function(name){
 };
 stack.prototype.get=function(id){
 	return this.array[id];
-}
+};
 stack.prototype.getByName=function(name){
 	if(this.exists(name))
 	{
@@ -70,8 +70,38 @@ stack.prototype.getByName=function(name){
 				return result;
 		});
 		return result;
+	};
+};
+stack.prototype.addProperty=function(id,name,value)
+{
+	try{
+		var item=this.get(id);
+		item[name]=value;
+	}catch(e)
+	{
+	 console.log(e);	
 	}
-}
+
+};
+stack.prototype.getProperty=function(id,name)
+{
+	try{
+		var item=this.get(id);
+		return item[name];
+	}catch(e){
+		console.log(e);
+	}
+};
+stack.prototype.getPropertyByName=function(name,item)
+{
+	var id=this.getByName(name).id;
+	return this.getProperty(id,item);
+};
+stack.prototype.addPropertyByName=function(name,item,value)
+{
+	var id=this.getByName(name).id;
+	this.addProperty(id,item,value);
+};
 stack.prototype.prune=function(){
 	var temparr=[];
 	this.each(function(arr){
@@ -83,4 +113,30 @@ stack.prototype.prune=function(){
 	});
 	this.array=temparr;
 	return true;
-}
+};
+//Todo: Finish These Functions.  They are just Skeletal right now.
+stack.prototype.getByPropertyName=function(name){
+	
+};
+stack.prototype.toJSON=function(){
+	return JSON.parse(JSON.stringify(this.array));
+};
+stack.prototype.toString=function(){
+	
+};
+stack.prototype.toArray=function(){
+	
+};
+stack.prototype.join=function(delimiter)
+{
+	
+};
+stack.prototype.first=function(){
+	
+};
+stack.prototype.last=function(){
+	
+};
+stack.prototype.without=function(values){
+	
+};
